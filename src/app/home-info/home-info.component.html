@@ -1,0 +1,32 @@
+<h2> Location Information </h2>
+
+<!--Form and Display for home information attached to each marker-->
+<form [formGroup]="homeInfoForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="address">
+            <!--Uses the index of the marker to find the appropriate address-->
+            Address: {{homeaddress[this.homeInfoService.markloc]}}
+        </label>
+        <br/>
+        <input id="address" type="text" formControlName="address">
+    </div>
+
+    <div>
+        <label for="value">
+            Home Value: {{homevalue[this.homeInfoService.markloc]}}
+        </label>
+        <br/>
+        <input id="value" type="number" formControlName="value">
+    </div>
+
+    <div>
+        <label for="description">
+            Description: {{homedescription[this.homeInfoService.markloc]}}
+        </label>
+        <br/>
+        <input id="description" type="text" formControlName="description">
+    </div>
+    
+    <button class="button" type="submit">Done</button>
+    <button class="button" (click)="onDelete2()">Delete</button>
+</form>

@@ -1,0 +1,24 @@
+<!--Properties and functions associated with the map-->
+<google-map height="600px"
+            width="900px"
+            [zoom]="zoom"
+            (mapClick)="moveMap($event)"
+            (mapMousemove)="move($event)"
+            (mapClick)="newMarker($event)">
+            <!--Assignment of map-marker properties and conditional invoking of app.component.ts functions-->
+            <map-marker #marker="mapMarker"
+                        *ngFor="let m of markerPositions;index as i"
+                        (mapClick)="openInfoWindow(marker,m)"
+                        [position]="m"
+                        [options]="markerOptions"
+                        >
+                        <map-info-window>
+                            <!--Invokes home-info.component.html-->
+                            <app-home-info></app-home-info>
+                        </map-info-window>
+            </map-marker>
+</google-map>
+
+<!--Displays Coordinates of the cursor-->
+<div>Latitude: {{display?.lat}}</div>
+<div>Longitude: {{display?.lng}}</div>
